@@ -1,26 +1,49 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('home') }}">Welcome home, {{ app.user.firstName }} {{ app.user.lastName }}</a>
+        <a class="navbar-brand" href="{{ path('admin') }}">Admin Interface</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('admin') }}">Admin</a>
+                    <a class="nav-link" href="{{ path('home') }}">To Home</a>
                 </li>
 
+{#                POST CATEGORIES DROPDOWN MENU #}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Post Category
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Create</a></li>
-                        <li><a class="dropdown-item" href="#">Read</a></li>
-                        <li><a class="dropdown-item" href="#">Update</a></li>
-                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                        <li>
+                            <a class="dropdown-item"
+                               href="{{ path('admin_post_categories') }}">
+                                Categories
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                               href="{{ path('admin_new_post_category') }}">
+                                Add a category
+                            </a>
+                        </li>
                     </ul>
+                </li>
+
+{#                POSTS DROPDOWN MENU #}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Posts
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+{#                       ' <li> ' to add like above #}
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
                 </li>
 
             </ul>

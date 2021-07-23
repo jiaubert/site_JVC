@@ -1,0 +1,45 @@
+{% extends 'layout/admin-layout.html.twig' %}
+
+{% block title %}Hello AdminPostCategoryController!{% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <h2>
+        See the current list of post categories or
+        <a href="{{ path('admin_new_post_category') }}" type="button" class="btn btn-outline-primary">
+            Add a new category
+        </a>
+    </h2>
+
+    {% if deleteMessage is defined %}
+        <p>{{ deleteMessage }}</p>
+    {% endif %}
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Categories</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for category in postCategories %}
+                <tr>
+                    <td>
+                        {{ category.name | capitalize }}
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <a href="{{ path('admin_update_post_category', {'id': category.id}) }}" type="button" class="btn btn-outline-warning ml-3">Modify</a>
+                            <a href="{{ path('admin_delete_post_category', {'id': category.id}) }}" type="button" class="btn btn-outline-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}
