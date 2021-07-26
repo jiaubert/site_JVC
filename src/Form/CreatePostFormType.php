@@ -6,7 +6,6 @@ use App\Entity\Post;
 use App\Entity\PostCategory;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,10 +22,7 @@ class CreatePostFormType extends AbstractType
             ->add('content', TextType::class, [
                 'label' => 'Post content: '
             ])
-            ->add('status', TextType::class, [
-                'label' => 'Status: ',
-            ])
-            ->add('postCategory', EntityType::class, [
+            ->add('postCategories', EntityType::class, [
                 'class' => PostCategory::class,
                 'choice_label' => 'name',
                 'label' => 'Post category: '

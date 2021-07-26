@@ -1,17 +1,32 @@
 {% extends 'layout/layout.html.twig' %}
 
-{% block title %} Hello HomeController {% endblock %}
+
+
 
 {% block body %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="container mt-5">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/HB/Documents/Class/13. Php (Kevin T. - Jules Pauly - Theau Goncalves)/10.symfony/vg-blog/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/HB/Documents/Class/13. Php (Kevin T. - Jules Pauly - Theau Goncalves)/10.symfony/vg-blog/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <h2>Last Posts</h2>
+
+        <div class="d-flex flex-wrap d-grid gap-2">
+
+            {% for post in posts %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                        {{ post.postCategories.name }}
+                        ( {{ post.numberView }} views)
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text">{{ post.content | length > 50 ? post.content|slice(0,50)~'...' : post.content }}</p>
+                        <a href="{{ path('post_detail', { 'id': post.id }) }}" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
 
 {% endblock %}
