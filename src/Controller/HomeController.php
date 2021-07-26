@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Enum\HelpTicketEnum;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

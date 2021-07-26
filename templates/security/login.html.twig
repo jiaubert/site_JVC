@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout/layout.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
 
@@ -9,10 +9,12 @@
     {% endif %}
 
     {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        <div class="mt-5">
+            <h4>You are already logged in as {{ app.user.username }}</h4>
+            <a href="{{ path('home') }}" class="btn btn-primary">To main menu</a>
+            <a href="{{ path('app_logout') }}" class="btn btn-danger">Logout</a>
         </div>
-    {% endif %}
+    {% else %}
 
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
@@ -46,4 +48,6 @@
         Sign in
     </button>
 </form>
+
+    {% endif %}
 {% endblock %}

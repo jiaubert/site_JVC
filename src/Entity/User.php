@@ -64,10 +64,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $messages;
 
+    /**
+     * @ORM\OneToMany(targetEntity=HelpTicket::class, mappedBy="user")
+     */
+    private $helpTickets;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
         $this->messages = new ArrayCollection();
+        $this->helpTickets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -249,6 +255,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($message->getUser() === $this) {
                 $message->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|HelpTicket[]
+     */
+    public function getHelpTickets(): Collection
+    {
+        return $this->helpTickets;
+    }
+
+    public function addHelpTicket(HelpTicket $helpTicket): self
+    {
+        if (!$this->helpTickets->contains($helpTicket)) {
+            $this->helpTickets[] = $helpTicket;
+            $helpTicket->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHelpTicket(HelpTicket $helpTicket): self
+    {
+        if ($this->helpTickets->removeElement($helpTicket)) {
+            // set the owning side to null (unless already changed)
+            if ($helpTicket->getUser() === $this) {
+                $helpTicket->setUser(null);
             }
         }
 
