@@ -1,12 +1,13 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello UserHelpTicketController!{% endblock %}
+{% extends 'layout/layout.html.twig' %}
 
 {% block body %}
 
 
 <div class="example-wrapper">
-    <h1>TICKET FROM USER TO ADMIN</h1>
+    <h1>Send a help ticket to admin</h1>
+
+    {{ form_start(form) }}
+    {{ form_end(form) }}
 
 </div>
 {% endblock %}

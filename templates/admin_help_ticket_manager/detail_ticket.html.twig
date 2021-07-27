@@ -1,0 +1,25 @@
+{% extends 'layout/admin-layout.html.twig' %}
+
+{% block body %}
+
+    <div class="container mt-5">
+
+        <h2>Ticket {{ ticket.id }}: {{ ticket.title }} </h2>
+        <h5>
+            {% if ticket.status == 0 %}
+                (new ticket)
+            {% elseif ticket.status == 1 %}
+                (current ticket - treated {{ ticket.treatedOn | date('m/d/Y h:i:m', 'Europe/Paris') }})
+            {% else %}
+                (ticket closed {{ ticket.treatedOn | date('m/d/Y h:i:m', 'Europe/Paris') }})
+            {% endif %}
+        </h5>
+        <p>Created by {{ ticket.user.firstName }} {{ ticket.user.lastName}} on {{ ticket.createdAt | date ('m/d/Y') }} at {{ ticket.createdAt | date ('h:i:s', 'Europe/Paris') }}</p>
+        <p>{{ ticket.content }}</p>
+
+        <a href="{{ path('admin_close_ticket', { 'id': ticket.id }) }}" class="btn btn-outline-warning">Close ticket</a>
+
+
+    </div>
+
+{% endblock %}

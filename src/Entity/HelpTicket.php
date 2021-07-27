@@ -44,6 +44,11 @@ class HelpTicket
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $treatedOn;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -114,6 +119,18 @@ class HelpTicket
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getTreatedOn(): ?\DateTimeInterface
+    {
+        return $this->treatedOn;
+    }
+
+    public function setTreatedOn(?\DateTimeInterface $treatedOn): self
+    {
+        $this->treatedOn = $treatedOn;
 
         return $this;
     }
