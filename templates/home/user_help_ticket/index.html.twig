@@ -7,6 +7,19 @@
     <h1>Send a help ticket to admin</h1>
 
     {{ form_start(form) }}
+
+    <div class="mb-3">
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.content) }}
+        {{ form_widget(form.content) }}
+    </div>
+
+
+        {{ form_row(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
     {{ form_end(form) }}
 
 </div>
