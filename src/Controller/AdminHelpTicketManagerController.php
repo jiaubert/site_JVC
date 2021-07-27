@@ -53,11 +53,14 @@ class AdminHelpTicketManagerController extends AbstractController
     public function checkTicketDetails($id): Response
     {
         $ticketEntity = $this->helpTicketRepository->find($id);
-        $ticketEntity->setStatus(HelpTicketEnum::HELP_TCIKET_READ);
-        $ticketEntity->setTreatedOn(new \DateTime());
 
-        $this->em->persist($ticketEntity);
-        $this->em->flush();
+        if ($ticketEntity !== null) {
+            $ticketEntity->setStatus(HelpTicketEnum::HELP_TCIKET_READ);
+            $ticketEntity->setTreatedOn(new \DateTime());
+
+            $this->em->persist($ticketEntity);
+            $this->em->flush();
+        }
 
         return $this->render('admin/admin_help_ticket_manager/detail_ticket.html.twig', [
             'ticket' => $ticketEntity,
@@ -71,11 +74,14 @@ class AdminHelpTicketManagerController extends AbstractController
     public function closeTicket($id): Response
     {
         $ticketEntity = $this->helpTicketRepository->find($id);
-        $ticketEntity->setStatus(HelpTicketEnum::HELP_TCIKET_TREATED);
-        $ticketEntity->setTreatedOn(new \DateTime());
 
-        $this->em->persist($ticketEntity);
-        $this->em->flush();
+        if ($ticketEntity !== null) {
+            $ticketEntity->setStatus(HelpTicketEnum::HELP_TCIKET_TREATED);
+            $ticketEntity->setTreatedOn(new \DateTime());
+
+            $this->em->persist($ticketEntity);
+            $this->em->flush();
+        }
 
         return $this->redirectToRoute('admin_help_ticket_manager', [
             'ticket' => $ticketEntity,
