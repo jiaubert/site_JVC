@@ -45,7 +45,7 @@ class AdminPostController extends AbstractController
     public function listAllPosts(): Response
     {
         $postEntities = $this->postRepository->findAll();
-        return $this->render('admin_post/index.html.twig', [
+        return $this->render('admin/admin_post/index.html.twig', [
             'postEntities' => $postEntities,
         ]);
     }
@@ -57,7 +57,7 @@ class AdminPostController extends AbstractController
     public function displayPostDetail($id): Response
     {
         $postEntity = $this->postRepository->find($id);
-        return $this->render('admin_post/detailPost.html.twig', [
+        return $this->render('admin/admin_post/detailPost.html.twig', [
             'post' => $postEntity,
         ]);
     }
@@ -84,7 +84,7 @@ class AdminPostController extends AbstractController
             return $this->redirectToRoute('admin_posts');
         }
 
-        return $this->render('admin_post/newPost.html.twig', [
+        return $this->render('admin/admin_post/newPost.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -108,7 +108,7 @@ class AdminPostController extends AbstractController
             return $this->redirectToRoute('admin_posts');
         }
 
-        return $this->render('admin_post/newPost.html.twig', [
+        return $this->render('admin/admin_post/newPost.html.twig', [
             'form' => $form->createView(),
         ]);
     }

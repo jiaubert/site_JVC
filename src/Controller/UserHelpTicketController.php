@@ -58,7 +58,7 @@ class UserHelpTicketController extends AbstractController
             $this->em->flush();
         }
 
-        return $this->render('user_help_ticket/index.html.twig', [
+        return $this->render('home/user_help_ticket/index.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -74,7 +74,7 @@ class UserHelpTicketController extends AbstractController
             'user' => $this->getUser()
         ]);
 
-        return $this->render('user_help_ticket/userTickets.html.twig', [
+        return $this->render('home/user_help_ticket/userTickets.html.twig', [
             'tickets' => $helpTickets,
         ]);
     }

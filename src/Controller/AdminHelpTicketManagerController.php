@@ -41,7 +41,7 @@ class AdminHelpTicketManagerController extends AbstractController
     {
         $helpTickets = $this->helpTicketRepository->findAll();
 
-        return $this->render('admin_help_ticket_manager/index.html.twig', [
+        return $this->render('admin/admin_help_ticket_manager/index.html.twig', [
             'helpTickets' => $helpTickets,
         ]);
     }
@@ -59,7 +59,7 @@ class AdminHelpTicketManagerController extends AbstractController
         $this->em->persist($ticketEntity);
         $this->em->flush();
 
-        return $this->render('admin_help_ticket_manager/detail_ticket.html.twig', [
+        return $this->render('admin/admin_help_ticket_manager/detail_ticket.html.twig', [
             'ticket' => $ticketEntity,
         ]);
     }

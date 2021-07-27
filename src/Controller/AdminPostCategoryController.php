@@ -44,7 +44,7 @@ class AdminPostCategoryController extends AbstractController
     {
         $postCategoryEntities = $this->postCategoryEntities->findAll();
 
-        return $this->render('admin_post_category/index.html.twig', [
+        return $this->render('admin/admin_post_category/index.html.twig', [
             'postCategories' => $postCategoryEntities,
         ]);
     }
@@ -65,7 +65,7 @@ class AdminPostCategoryController extends AbstractController
             return $this->redirectToRoute('admin_post_categories');
         }
 
-        return $this->render('admin_post_category/newCategory.html.twig', [
+        return $this->render('admin/admin_post_category/newCategory.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -86,7 +86,7 @@ class AdminPostCategoryController extends AbstractController
             return $this->redirectToRoute('admin_post_categories');
         }
 
-        return $this->render('admin_post_category/newCategory.html.twig', [
+        return $this->render('admin/admin_post_category/newCategory.html.twig', [
             'form' => $form->createView(),
         ]);
     }
