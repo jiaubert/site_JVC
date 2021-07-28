@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Enum\HelpTicketEnum;
+use App\Repository\ForumRepository;
 use App\Repository\PostRepository;
+use App\Repository\TopicRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,18 +24,30 @@ class HomeController extends AbstractController
      */
     private $em;
 
+    /**
+     * @var ForumRepository
+     */
+    private $forumRepo;
+
+    /**
+     * @var TopicRepository
+     */
+    private $topicRepo;
 
     /**
      * HomeController constructor.
      * @param PostRepository $postRepository
      * @param EntityManagerInterface $em
+     * @param ForumRepository $forumRepo
+     * @param TopicRepository $topicRepo
      */
-    public function __construct(PostRepository $postRepository, EntityManagerInterface $em)
+    public function __construct(PostRepository $postRepository, EntityManagerInterface $em, ForumRepository $forumRepo, TopicRepository $topicRepo)
     {
         $this->postRepository = $postRepository;
         $this->em = $em;
+        $this->forumRepo = $forumRepo;
+        $this->topicRepo = $topicRepo;
     }
-
 
     // LIST ALL POSTS
     /**
@@ -65,5 +79,18 @@ class HomeController extends AbstractController
         ]);
     }
 
+    //forum detail (list topic)
+    /**
+     * @Route("/forum_detail/{id}", name="forum_detail")
+     */
+    public function displayForumDetail(int $id): Response
+    {
+        $forumEntity = $this->forumRepo->find($id);
+        $topicEntities = $this->topicRepo->findAll();
+        dump($topicEntities);
 
+        return $this->render('home/forum_front/forumDetail.html.twig', [
+            'forum' => $forumEntity,
+        ]);
+    }
 }

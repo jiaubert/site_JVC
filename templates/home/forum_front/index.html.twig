@@ -1,0 +1,27 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block title %}Hello ForumFrontController!{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-5">
+
+        <h2>Last Posts</h2>
+
+        <div class="d-flex flex-wrap d-grid gap-2">
+
+            {% for forum in forums %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                        {{ forum.title }}
+                    </div>
+                    <div class="card-body">
+                        <a href="{{ path('forum_detail', { 'id': forum.id }) }}" class="btn btn-primary">Access to forum</a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+{% endblock %}

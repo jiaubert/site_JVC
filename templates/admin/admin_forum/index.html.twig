@@ -1,0 +1,44 @@
+{% extends 'layout/admin-layout.html.twig' %}
+
+{% block title %}Hello AdminForumController!{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h2>
+            See the current list of forum or
+            <a href="{{ path('admin_create_forum') }}" type="button" class="btn btn-outline-primary">
+                Add a new forum
+            </a>
+        </h2>
+
+        {% if deleteMessage is defined %}
+            <p>{{ deleteMessage }}</p>
+        {% endif %}
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Forum</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for forum in listeForums %}
+                <tr>
+                    <td>
+                        {{ forum.title | capitalize }}
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <a href="{{ path('admin_update_forum', {'id': forum.id}) }}" type="button" class="btn btn-outline-warning ml-3">Modify</a>
+                            <a href="{{ path('admin_delete_forum', {'id': forum.id}) }}" type="button" class="btn btn-outline-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}
