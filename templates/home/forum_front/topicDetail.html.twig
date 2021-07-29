@@ -1,0 +1,21 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block body %}
+
+
+    <a href="{{ path('forum_detail', {'id': topic.forum.id}) }}" class="btn btn-outline-primary mt-2">Back to topic list</a>
+
+    <div class="container mt-5">
+
+        <h2> {{ topic.title }} <a href="{{ path('user_new_message', {'id':topic.id}) }}" class="btn btn-outline-primary mt-2">New message</a></h2>
+        <ul>
+           {% for message in topic.messages %}
+            <li>
+                {{ message.content }}
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+{% endblock %}

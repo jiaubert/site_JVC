@@ -86,11 +86,23 @@ class HomeController extends AbstractController
     public function displayForumDetail(int $id): Response
     {
         $forumEntity = $this->forumRepo->find($id);
-        $topicEntities = $this->topicRepo->findAll();
-        dump($topicEntities);
+
 
         return $this->render('home/forum_front/forumDetail.html.twig', [
             'forum' => $forumEntity,
+        ]);
+    }
+
+    //topic detail (list message)
+    /**
+     * @Route("/topic_detail/{id}", name="topic_detail")
+     */
+    public function displayTopicDetail(int $id): Response
+    {
+        $topicEntity = $this->topicRepo->find($id);
+
+        return $this->render('home/forum_front/topicDetail.html.twig', [
+            'topic' => $topicEntity,
         ]);
     }
 }

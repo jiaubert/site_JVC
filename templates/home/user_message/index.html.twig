@@ -1,0 +1,25 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+    <a href="{{ path('forum_front') }}" class="btn btn-outline-primary mt-2">Back to forums list</a>
+
+    <div class="container mt-5">
+        <h1>Create a new message</h1>
+
+        {{ form_start(form) }}
+
+        <div class="mb-3">
+            {{ form_label(form.content) }}
+            {{ form_widget(form.content) }}
+        </div>
+
+        {{ form_row(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}

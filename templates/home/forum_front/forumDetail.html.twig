@@ -3,14 +3,17 @@
 {% block body %}
 
 
-    <a href="{{ path('home') }}" class="btn btn-outline-primary mt-2">Back to home</a>
+    <a href="{{ path('forum_front') }}" class="btn btn-outline-primary mt-2">Back to forums list</a>
 
     <div class="container mt-5">
 
-
-        <h2> {{ forum.title }}</h2>
-
-
+        <h2> {{ forum.title }} <a href="{{ path('user_new_topic', {'id':forum.id}) }}" class="btn btn-outline-primary mt-2">Create topic</a></h2>
+        <img src="{{ asset('build/image/witcher3.jpg')}}" alt="witcher3" width="80">
+        <ul>
+           {% for topic in forum.topics %}
+            <li><a href="{{ path('topic_detail', {'id':topic.id}) }}">{{ topic.title }}</a></li>
+            {% endfor %}
+        </ul>
 
     </div>
 
