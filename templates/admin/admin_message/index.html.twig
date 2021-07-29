@@ -1,0 +1,44 @@
+{% extends 'layout/admin-layout.html.twig' %}
+
+{% block title %}Hello AdminMessageController!{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h2>
+            See the current list of message
+        </h2>
+
+        {% if deleteMessage is defined %}
+            <p>{{ deleteMessage }}</p>
+        {% endif %}
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Message</th>
+                <th scope="col">Topic</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for message in listeMessages %}
+                <tr>
+                    <td>
+                        {{ message.content }}
+                    </td>
+                    <td>
+                        {{ message.topic.title | capitalize }}
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <a href="{{ path('admin_delete_message', {'id': message.id}) }}" type="button" class="btn btn-outline-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

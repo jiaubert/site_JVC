@@ -40,7 +40,7 @@ class Topic
     private $forum;
 
     /**
-     * @ORM\OneToMany(targetEntity=Message::class, mappedBy="topic")
+     * @ORM\OneToMany(targetEntity=Message::class, mappedBy="topic", cascade={"remove"})
      */
     private $messages;
 

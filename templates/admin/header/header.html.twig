@@ -57,6 +57,7 @@
                     </ul>
                 </li>
 
+{#                FORUMS DROPDOWN MENU #}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Forums
@@ -72,6 +73,42 @@
                             <a class="dropdown-item"
                                href="{{ path('admin_create_forum') }}">
                                 Add a forum
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+{#                TOPICS DROPDOWN MENU #}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Topics
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li>
+                            <a class="dropdown-item"
+                               href="{{ path('admin_topic') }}">
+                                Topics
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                               href="{{ path('admin_create_topic') }}">
+                                Add a topic
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+{#                MESSAGES DROPDOWN MENU #}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Messages
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li>
+                            <a class="dropdown-item"
+                               href="{{ path('admin_message') }}">
+                                Messages
                             </a>
                         </li>
                     </ul>

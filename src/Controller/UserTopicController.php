@@ -43,7 +43,7 @@ class UserTopicController extends AbstractController
 
             $this->em->persist($topic);
             $this->em->flush();
-            return $this->redirectToRoute('forum_front');
+            return $this->redirectToRoute('forum_detail',['id'=>$topic->getForum()->getId()]);
         }
 
         return $this->render('home/user_topic/index.html.twig', [

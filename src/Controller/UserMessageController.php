@@ -43,7 +43,7 @@ class UserMessageController extends AbstractController
 
             $this->em->persist($message);
             $this->em->flush();
-            return $this->redirectToRoute('forum_front');
+            return $this->redirectToRoute('topic_detail',['id'=>$message->getTopic()->getId()]);
         }
 
         return $this->render('home/user_message/index.html.twig', [

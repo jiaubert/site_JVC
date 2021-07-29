@@ -30,7 +30,7 @@ class Forum
     private $createdAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Topic::class, mappedBy="forum")
+     * @ORM\OneToMany(targetEntity=Topic::class, mappedBy="forum", cascade={"remove"})
      */
     private $topics;
 
